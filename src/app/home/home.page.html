@@ -13,4 +13,29 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="page-background"> </ion-content>
+<ion-content [fullscreen]="true" class="page-background">
+  <ion-grid>
+    <ion-row>
+      <h1>Recipe Finder</h1>
+      <p>
+        To search for a recipe containing multiple ingredients, please seperate
+        each ingredient with a comma.
+      </p>
+    </ion-row>
+    <ion-row>
+      <ion-searchbar
+        show-clear-button="focus"
+        clear-icon="trash-bin"
+        value="Enter Ingredients"
+        id="searchbar"
+        shape="round"
+      ></ion-searchbar>
+    </ion-row>
+    <ion-row>
+      <ion-button size="small" id="searchbutton" class="no-caps">
+        <ion-icon slot="start" name="search-sharp"></ion-icon>
+        Search
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

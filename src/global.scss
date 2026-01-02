@@ -34,4 +34,40 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+.header {
+  --background: #ebe1d1;
+  color: #0d4715;
+}
+
+.page-background {
+  --background: #ebe1d1;
+}
+
+body {
+  --background: #ebe1d1;
+  font-family: "Figtree";
+}
+
+p {
+  color: #41644a;
+}
+
+#searchbar {
+  --background: #ebe1d1;
+  color: #41644a;
+}
+
+h1 {
+  color: #0d4715;
+}
+
+#searchbutton {
+  --background: #0d4715;
+  color: #ebe1d1;
+}
+
+.no-caps {
+  text-transform: none;
+}

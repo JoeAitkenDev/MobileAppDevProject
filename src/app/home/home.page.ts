@@ -7,10 +7,14 @@ import {
   IonButton,
   IonButtons,
   IonIcon,
+  IonCol,
+  IonGrid,
+  IonRow,
+  IonSearchbar,
 } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
-import { cogSharp, heartSharp } from 'ionicons/icons';
+import { cogSharp, heartSharp, searchSharp, trashBin } from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +28,10 @@ import { cogSharp, heartSharp } from 'ionicons/icons';
     IonToolbar,
     IonTitle,
     IonContent,
+    IonCol,
+    IonGrid,
+    IonRow,
+    IonSearchbar,
   ],
 })
 export class HomePage {
@@ -31,6 +39,8 @@ export class HomePage {
     addIcons({
       heartSharp,
       cogSharp,
+      trashBin,
+      searchSharp,
     });
   }
 }
