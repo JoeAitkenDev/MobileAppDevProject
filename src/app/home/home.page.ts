@@ -10,7 +10,7 @@ import {
 } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
-import { heartOutline, settingsOutline } from 'ionicons/icons';
+import { cogSharp, heartSharp } from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
@@ -29,8 +29,8 @@ import { heartOutline, settingsOutline } from 'ionicons/icons';
 export class HomePage {
   constructor() {
     addIcons({
-      heartOutline,
-      settingsOutline,
+      heartSharp,
+      cogSharp,
     });
   }
 }
