@@ -7,4 +7,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="page-background"> </ion-content>
+<ion-content [fullscreen]="true" class="page-background">
+  <h1>Unit of Measurement</h1>
+
+  <ion-radio-group id="radio" [allowEmptySelection]="true" value="metric">
+    <ion-radio value="metric">Metric</ion-radio><br />
+    <ion-radio value="us">US</ion-radio><br />
+  </ion-radio-group>
+</ion-content>

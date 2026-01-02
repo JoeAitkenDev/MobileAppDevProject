@@ -9,6 +9,8 @@ import {
   IonToolbar,
   IonHeader,
   IonContent,
+  IonRadio,
+  IonRadioGroup,
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -26,6 +28,8 @@ import {
     IonToolbar,
     IonHeader,
     IonContent,
+    IonRadio,
+    IonRadioGroup,
   ],
 })
 export class SettingsPage implements OnInit {
