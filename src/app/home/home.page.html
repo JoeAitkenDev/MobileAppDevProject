@@ -3,10 +3,10 @@
     <ion-title slot="start"> G00472870 </ion-title>
 
     <ion-buttons slot="primary">
-      <ion-button>
+      <ion-button routerLink="/favourites">
         <ion-icon slot="icon-only" name="heart-sharp" class="header"></ion-icon>
       </ion-button>
-      <ion-button>
+      <ion-button routerLink="/settings">
         <ion-icon slot="icon-only" name="cog-sharp" class="header"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -17,6 +17,8 @@
   <ion-grid>
     <ion-row>
       <h1>Recipe Finder</h1>
+    </ion-row>
+    <ion-row>
       <p>
         To search for a recipe containing multiple ingredients, please seperate
         each ingredient with a comma.
@@ -26,14 +28,13 @@
       <ion-searchbar
         show-clear-button="focus"
         clear-icon="trash-bin"
-        value="Enter Ingredients"
+        placeholder="Enter Ingredients"
         id="searchbar"
         shape="round"
       ></ion-searchbar>
     </ion-row>
     <ion-row>
-      <ion-button size="small" id="searchbutton" class="no-caps">
-        <ion-icon slot="start" name="search-sharp"></ion-icon>
+      <ion-button expand="block" size="small" id="searchbutton" class="no-caps">
         Search
       </ion-button>
     </ion-row>

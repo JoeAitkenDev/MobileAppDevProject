@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
   IonHeader,
   IonToolbar,
@@ -32,6 +33,7 @@ import { cogSharp, heartSharp, searchSharp, trashBin } from 'ionicons/icons';
     IonGrid,
     IonRow,
     IonSearchbar,
+    RouterLink,
   ],
 })
 export class HomePage {
