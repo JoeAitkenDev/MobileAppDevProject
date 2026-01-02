@@ -14,29 +14,28 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="page-background">
-  <ion-grid>
-    <ion-row>
-      <h1>Recipe Finder</h1>
-    </ion-row>
-    <ion-row>
-      <p>
-        To search for a recipe containing multiple ingredients, please seperate
-        each ingredient with a comma.
-      </p>
-    </ion-row>
-    <ion-row>
-      <ion-searchbar
-        show-clear-button="focus"
-        clear-icon="trash-bin"
-        placeholder="Enter Ingredients"
-        id="searchbar"
-        shape="round"
-      ></ion-searchbar>
-    </ion-row>
-    <ion-row>
-      <ion-button expand="block" size="small" id="searchbutton" class="no-caps">
-        Search
-      </ion-button>
-    </ion-row>
-  </ion-grid>
+  <h1>Recipe Finder</h1>
+
+  <p>
+    To search for a recipe containing multiple ingredients, please seperate each
+    ingredient with a comma.
+  </p>
+  <div class="searchdiv">
+    <ion-searchbar
+      show-clear-button="focus"
+      clear-icon="trash-bin"
+      placeholder="Enter Ingredients"
+      id="searchbar"
+      shape="round"
+    ></ion-searchbar>
+    <ion-button
+      expand="block"
+      shape="round"
+      size="small"
+      id="searchbutton"
+      class="no-caps"
+    >
+      Search
+    </ion-button>
+  </div>
 </ion-content>
