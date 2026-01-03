@@ -11,7 +11,13 @@
   <div class="ion-padding">
     <h1>Unit of Measurement</h1>
 
-    <ion-radio-group id="radio" [allowEmptySelection]="true" value="metric">
+    <ion-radio-group
+      [(ngModel)]="unit"
+      (ionChange)="selectRadio($event)"
+      id="radio"
+      [allowEmptySelection]="true"
+      [value]="unit"
+    >
       <ion-radio value="metric">Metric</ion-radio><br />
       <ion-radio value="us">US</ion-radio><br />
     </ion-radio-group>
