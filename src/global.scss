@@ -36,50 +36,51 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
-.header {
-  --background: #ebe1d1;
-  color: #0d4715;
-}
-
-.page-background {
-  --background: #ebe1d1;
-}
-
+// Applies the font Figtree and a background colour to the app globally
 body {
-  --background: #ebe1d1;
+  --background: #eae0cf;
   font-family: "Figtree";
 }
 
+// The following classes and ids are purely to implment a colour scheme found on colorhunt.co
+.header {
+  --background: #eae0cf;
+  color: #213448;
+}
+
+.page-background {
+  --background: #eae0cf;
+}
+
 p {
-  color: #41644a;
+  color: #547792;
 }
 
 #searchbar {
-  --background: #ebe1d1;
-  color: #41644a;
+  --background: #eae0cf;
+  color: #547792;
 }
 
 h1 {
-  color: #0d4715;
+  color: #213448;
 }
 
 #searchbutton {
-  --background: #0d4715;
-  color: #ebe1d1;
+  --background: #213448;
+  color: #eae0cf;
 }
 
+#radio {
+  color: #547792;
+}
+
+// Used to remove the enforcement of capital letters from the search button
 .no-caps {
   text-transform: none;
 }
 
+// Prevents the search bar/button from getting ridiculously large on wider screens
 .searchdiv {
   max-width: 420px;
   width: 100%;
-}
-
-#radio {
-  color: #41644a;
-}
-
-.textbox {
 }
