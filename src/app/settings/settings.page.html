@@ -8,10 +8,12 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="page-background">
-  <h1>Unit of Measurement</h1>
+  <div class="ion-padding">
+    <h1>Unit of Measurement</h1>
 
-  <ion-radio-group id="radio" [allowEmptySelection]="true" value="metric">
-    <ion-radio value="metric">Metric</ion-radio><br />
-    <ion-radio value="us">US</ion-radio><br />
-  </ion-radio-group>
+    <ion-radio-group id="radio" [allowEmptySelection]="true" value="metric">
+      <ion-radio value="metric">Metric</ion-radio><br />
+      <ion-radio value="us">US</ion-radio><br />
+    </ion-radio-group>
+  </div>
 </ion-content>
