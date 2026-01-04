@@ -23,6 +23,7 @@ import { addIcons } from 'ionicons';
 import { cogSharp, heartSharp, searchSharp, trashBin } from 'ionicons/icons';
 import { MyHttpService } from '../services/my-http.service';
 import { HttpOptions } from '@capacitor/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -46,9 +47,12 @@ import { HttpOptions } from '@capacitor/core';
     IonCardHeader,
     IonCardSubtitle,
     IonCardTitle,
+    CommonModule,
   ],
 })
 export class HomePage {
+  recipeData: any;
+
   options: HttpOptions = {
     url: this.mhs.getRecipesURL,
   };
@@ -63,11 +67,13 @@ export class HomePage {
   }
 
   ngOnInit() {
+    this.recipeData = [];
     this.getRecipes();
   }
 
   async getRecipes() {
     let result = await this.mhs.get(this.options);
-    console.log(result);
+    this.recipeData = result.data.results;
+    console.log(this.recipeData);
   }
 }
