@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
+import { MyDataService } from '../services/my-data.service';
 import {
   IonHeader,
   IonToolbar,
@@ -21,7 +22,6 @@ import { cogSharp, heartSharp, searchSharp, trashBin } from 'ionicons/icons';
 import { MyHttpService } from '../services/my-http.service';
 import { HttpOptions } from '@capacitor/core';
 import { CommonModule } from '@angular/common';
-import { SharedData } from '../services/shared-data';
 
 @Component({
   selector: 'app-home',
@@ -60,7 +60,7 @@ export class HomePage {
   constructor(
     private mhs: MyHttpService,
     private router: Router,
-    private sd: SharedData
+    private mds: MyDataService
   ) {
     addIcons({
       heartSharp,
@@ -89,9 +89,9 @@ export class HomePage {
     this.recipeInstructions = result.data.analyzedInstructions[0].steps;
 
     // Add the ingredients, instructions and id to the shared data service
-    this.sd.ingredients = this.recipeIngredients;
-    this.sd.instructions = this.recipeInstructions;
-    this.sd.recipeID = id;
+    this.mds.ingredients = this.recipeIngredients;
+    this.mds.instructions = this.recipeInstructions;
+    this.mds.recipeID = id;
 
     console.log(this.recipeIngredients);
 

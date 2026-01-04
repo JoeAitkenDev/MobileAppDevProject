@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MyDataService } from '../services/my-data.service';
-import { SharedData } from '../services/shared-data';
 import { FormsModule } from '@angular/forms';
 
 import {
@@ -35,7 +34,7 @@ export class SettingsPage implements OnInit {
   // As the default selection is metric, add that to storage initially when the component loads
   unit: string = 'metric';
 
-  constructor(private mds: MyDataService, private sd: SharedData) {}
+  constructor(private mds: MyDataService) {}
 
   // Load the saved selection upon component launch, if there is one
   async ngOnInit() {
@@ -62,8 +61,6 @@ export class SettingsPage implements OnInit {
 
     // Commit the update to storage
     this.mds.set('unit', this.unit);
-
-    // Store the unit selection in the shared data service
-    this.sd.unit = this.unit;
+    this.mds.unit = this.unit;
   }
 }

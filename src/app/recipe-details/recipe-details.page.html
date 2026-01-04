@@ -9,13 +9,13 @@
 
 <ion-content [fullscreen]="true" class="page-background">
   <!-- This div only appears when the selected unit of measurement is 'metric' -->
-  <div *ngIf="sd.unit === 'metric'" class="ion-padding width-control">
+  <div *ngIf="mds.unit === 'metric'" class="ion-padding width-control">
     <h1 class="ion-padding">Ingredients: Metric</h1>
 
     <ion-card
       id="ion-card"
       class="ion-padding"
-      *ngFor="let ingredient of sd.ingredients"
+      *ngFor="let ingredient of mds.ingredients"
     >
       <img
         class="ingredient-image"
@@ -35,13 +35,13 @@
   </div>
 
   <!-- This div only appears when the selected unit of measurement is 'us' -->
-  <div *ngIf="sd.unit === 'us'" class="ion-padding width-control">
+  <div *ngIf="mds.unit === 'us'" class="ion-padding width-control">
     <h1 class="ion-padding">Ingredients: US</h1>
 
     <ion-card
       id="ion-card"
       class="ion-padding"
-      *ngFor="let ingredient of sd.ingredients"
+      *ngFor="let ingredient of mds.ingredients"
     >
       <img
         class="ingredient-image"
@@ -65,7 +65,7 @@
     <h1 class="ion-padding">Instructions</h1>
 
     <ion-list [inset]="true" id="ion-list">
-      <ion-item *ngFor="let step of sd.instructions">
+      <ion-item *ngFor="let step of mds.instructions">
         <ion-label>{{step.number}}: {{step.step}}</ion-label>
       </ion-item>
     </ion-list>
@@ -73,10 +73,10 @@
 
   <!-- Add to favourites button -->
   <!-- Display if the id ISN'T present in the favouritesList array -->
-  <div *ngIf="!sd.favouritesList.includes(sd.recipeID)" class="ion-padding">
+  <div *ngIf="!mds.favouritesList.includes(mds.recipeID)" class="ion-padding">
     <ion-button
       class="button-custom ion-padding"
-      (click)="addToFavourites(sd.recipeID)"
+      (click)="addToFavourites(mds.recipeID)"
     >
       Add to Favourites
       <ion-icon slot="end" name="heart-sharp"></ion-icon>
@@ -85,10 +85,10 @@
 
   <!-- Remove from favourites button -->
   <!-- Display if the id IS present in the favouritesList array -->
-  <div *ngIf="sd.favouritesList.includes(sd.recipeID)" class="ion-padding">
+  <div *ngIf="mds.favouritesList.includes(mds.recipeID)" class="ion-padding">
     <ion-button
       class="button-custom ion-padding"
-      (click)="removeFromFavourites(sd.recipeID)"
+      (click)="removeFromFavourites(mds.recipeID)"
     >
       Remove from Favourites
       <ion-icon slot="end" name="heart-sharp"></ion-icon>

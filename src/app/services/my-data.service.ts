@@ -5,6 +5,14 @@ import { Storage } from '@ionic/storage-angular';
   providedIn: 'root',
 })
 export class MyDataService {
+  public unit: string = 'metric';
+  public ingredients: any = null;
+  public instructions: any = null;
+  public recipeID: number = 0;
+
+  // Array to store the IDs of favourited recipes
+  public favouritesList: number[] = [];
+
   constructor(private storage: Storage) {
     this.init();
   }
