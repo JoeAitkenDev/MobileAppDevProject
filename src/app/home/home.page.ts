@@ -45,9 +45,7 @@ import { CommonModule } from '@angular/common';
   ],
 })
 export class HomePage {
-  recipeData: any;
-  recipeIngredients: any;
-  recipeInstructions: any;
+  public recipeData: any;
 
   constructor(
     private mhs: MyHttpService,
@@ -63,28 +61,18 @@ export class HomePage {
   }
 
   ngOnInit() {
+    this.loadRecipes();
     this.recipeData = [];
-    this.getRecipes();
   }
 
-  async getRecipes() {
-    let result = await this.mhs.searchRecipes();
-    this.recipeData = result.data.results;
+  async loadRecipes() {
+    await this.mds.getRecipes();
+    this.recipeData = this.mds.recipeData;
     console.log(this.recipeData);
   }
 
-  async getRecipeDetails(id: number) {
-    let result = await this.mhs.getRecipeDetails(id);
-
-    this.recipeIngredients = result.data.extendedIngredients;
-    this.recipeInstructions = result.data.analyzedInstructions[0].steps;
-
-    // Add the ingredients, instructions and id to the data service
-    this.mds.ingredients = this.recipeIngredients;
-    this.mds.instructions = this.recipeInstructions;
-    this.mds.recipeID = id;
-
-    console.log(this.recipeIngredients);
+  async loadRecipeDetails(id: number) {
+    await this.mds.getRecipeDetails(id);
 
     // Navigate to the recipe page
     this.router.navigate(['/recipe-details']);

@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
+import { MyHttpService } from './my-http.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MyDataService {
+  // This stores the recipes object so it can be used on both the home page and the favourites page
+  public recipeData: any;
+
+  // These variables help manage the logic throughout various pages
   public unit: string = 'metric';
   public ingredients: any = null;
   public instructions: any = null;
@@ -13,12 +18,13 @@ export class MyDataService {
   // Array to store the IDs of favourited recipes
   public favouritesList: number[] = [];
 
-  constructor(private storage: Storage) {
+  constructor(private storage: Storage, private mhs: MyHttpService) {
     this.init();
   }
 
   async init() {
     const storage = await this.storage.create();
+    this.recipeData = [];
   }
 
   async set(key: string, value: any) {
@@ -29,6 +35,25 @@ export class MyDataService {
     return await this.storage.get(key);
   }
 
+  async getRecipes() {
+    let result = await this.mhs.searchRecipes();
+    this.recipeData = result.data.results;
+    console.log(this.recipeData);
+  }
+
+  async getRecipeDetails(id: number) {
+    const result = await this.mhs.getRecipeDetails(id);
+
+    const ingredients = result.data.extendedIngredients;
+    const instructions = result.data.analyzedInstructions[0].steps;
+
+    this.recipeID = id;
+    this.ingredients = ingredients;
+    this.instructions = instructions;
+
+    console.log(ingredients);
+  }
+
   async saveFavouritesToStorage() {
     await this.storage.set('favourites', this.favouritesList);
   }
@@ -36,6 +61,6 @@ export class MyDataService {
   async checkFavouritesList(id: number) {
     const favourites = await this.storage.get('favourites');
 
-    return favourites.includes(this.recipeID); // Return true or false
+    return favourites.includes(id); // Return true or false
   }
 }
