@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {
   IonBackButton,
-  IonButton,
   IonButtons,
-  IonIcon,
-  IonMenuButton,
   IonTitle,
   IonToolbar,
   IonHeader,
@@ -19,10 +16,7 @@ import {
   standalone: true,
   imports: [
     IonBackButton,
-    IonButton,
     IonButtons,
-    IonIcon,
-    IonMenuButton,
     IonTitle,
     IonToolbar,
     IonHeader,

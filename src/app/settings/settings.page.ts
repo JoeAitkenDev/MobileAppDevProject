@@ -4,19 +4,14 @@ import { FormsModule } from '@angular/forms';
 
 import {
   IonBackButton,
-  IonButton,
   IonButtons,
-  IonIcon,
-  IonMenuButton,
   IonTitle,
   IonToolbar,
   IonHeader,
   IonContent,
   IonRadio,
   IonRadioGroup,
-  IonItem,
 } from '@ionic/angular/standalone';
-import { isNullishCoalesce } from 'typescript';
 
 @Component({
   selector: 'app-settings',
@@ -25,10 +20,7 @@ import { isNullishCoalesce } from 'typescript';
   standalone: true,
   imports: [
     IonBackButton,
-    IonButton,
     IonButtons,
-    IonIcon,
-    IonMenuButton,
     IonTitle,
     IonToolbar,
     IonHeader,
@@ -36,7 +28,6 @@ import { isNullishCoalesce } from 'typescript';
     IonRadio,
     IonRadioGroup,
     FormsModule,
-    IonItem,
   ],
 })
 export class SettingsPage implements OnInit {
