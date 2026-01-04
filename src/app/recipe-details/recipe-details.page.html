@@ -73,7 +73,7 @@
 
   <!-- Add to favourites button -->
   <!-- Display if the id ISN'T present in the favouritesList array -->
-  <div *ngIf="!mds.favouritesList.includes(mds.recipeID)" class="ion-padding">
+  <div *ngIf="!isFavourite" class="ion-padding">
     <ion-button
       class="button-custom ion-padding"
       (click)="addToFavourites(mds.recipeID)"
@@ -85,7 +85,7 @@
 
   <!-- Remove from favourites button -->
   <!-- Display if the id IS present in the favouritesList array -->
-  <div *ngIf="mds.favouritesList.includes(mds.recipeID)" class="ion-padding">
+  <div *ngIf="isFavourite" class="ion-padding">
     <ion-button
       class="button-custom ion-padding"
       (click)="removeFromFavourites(mds.recipeID)"

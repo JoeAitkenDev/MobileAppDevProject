@@ -28,4 +28,14 @@ export class MyDataService {
   async get(key: string) {
     return await this.storage.get(key);
   }
+
+  async saveFavouritesToStorage() {
+    await this.storage.set('favourites', this.favouritesList);
+  }
+
+  async checkFavouritesList(id: number) {
+    const favourites = await this.storage.get('favourites');
+
+    return favourites.includes(this.recipeID); // Return true or false
+  }
 }

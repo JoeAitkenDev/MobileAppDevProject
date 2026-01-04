@@ -49,14 +49,6 @@ export class HomePage {
   recipeIngredients: any;
   recipeInstructions: any;
 
-  recipes: HttpOptions = {
-    url: this.mhs.getRecipesURL,
-  };
-
-  details: HttpOptions = {
-    url: this.mhs.getRecipesURL,
-  };
-
   constructor(
     private mhs: MyHttpService,
     private router: Router,
@@ -76,19 +68,18 @@ export class HomePage {
   }
 
   async getRecipes() {
-    let result = await this.mhs.get(this.recipes);
+    let result = await this.mhs.searchRecipes();
     this.recipeData = result.data.results;
     console.log(this.recipeData);
   }
 
   async getRecipeDetails(id: number) {
-    this.details.url = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${this.mhs.apiKey}`;
-    let result = await this.mhs.get(this.details);
+    let result = await this.mhs.getRecipeDetails(id);
 
     this.recipeIngredients = result.data.extendedIngredients;
     this.recipeInstructions = result.data.analyzedInstructions[0].steps;
 
-    // Add the ingredients, instructions and id to the shared data service
+    // Add the ingredients, instructions and id to the data service
     this.mds.ingredients = this.recipeIngredients;
     this.mds.instructions = this.recipeInstructions;
     this.mds.recipeID = id;

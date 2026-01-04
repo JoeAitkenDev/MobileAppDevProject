@@ -46,26 +46,38 @@ import { MyDataService } from '../services/my-data.service';
   ],
 })
 export class RecipeDetailsPage implements OnInit {
-  // Allow data to be imported from the SharedData service
+  isFavourite: boolean = false;
+
+  // Allow data to be imported from the my-data service
   constructor(public mds: MyDataService) {
     addIcons({
       heartSharp,
     });
   }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    // Check to see if the recipe ID is saved to the favourites list in storage -> updated isFavourite variable accordingly
+    this.isFavourite = await this.mds.checkFavouritesList(this.mds.recipeID);
+  }
+
+  async toggleFavourite() {
+    this.isFavourite = await this.mds.checkFavouritesList(this.mds.recipeID);
+  }
 
   // Add the recipe id to the favourites array
-  addToFavourites(id: number) {
+  async addToFavourites(id: number) {
     this.mds.favouritesList.push(id);
-    console.log(this.mds.favouritesList);
+    await this.mds.saveFavouritesToStorage();
+    await this.toggleFavourite();
   }
 
   // Remove the recipe id from the favourites array
-  removeFromFavourites(id: number) {
+  async removeFromFavourites(id: number) {
     this.mds.favouritesList = this.mds.favouritesList.filter(
       (recipe) => recipe !== id
     ); // Keep 'recipe' WHERE recipe != id
-    console.log(this.mds.favouritesList);
+
+    await this.mds.saveFavouritesToStorage();
+    await this.toggleFavourite();
   }
 }

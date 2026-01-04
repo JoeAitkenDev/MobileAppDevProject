@@ -13,6 +13,20 @@ export class MyHttpService {
 
   constructor() {}
 
+  async searchRecipes() {
+    const options: HttpOptions = {
+      url: this.getRecipesURL,
+    };
+    return await this.get(options);
+  }
+
+  async getRecipeDetails(id: number) {
+    const options: HttpOptions = {
+      url: `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${this.apiKey}`,
+    };
+    return await this.get(options);
+  }
+
   async get(options: HttpOptions) {
     return await CapacitorHttp.get(options);
   }

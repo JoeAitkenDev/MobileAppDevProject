@@ -2,11 +2,16 @@ import { Component, OnInit } from '@angular/core';
 
 import {
   IonBackButton,
+  IonButton,
   IonButtons,
   IonTitle,
   IonToolbar,
   IonHeader,
   IonContent,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -21,6 +26,11 @@ import {
     IonToolbar,
     IonHeader,
     IonContent,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardTitle,
+    IonButton,
   ],
 })
 export class FavouritesPage implements OnInit {
