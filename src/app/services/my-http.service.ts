@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { CapacitorConfig } from '@capacitor/cli';
 import { CapacitorHttp, HttpOptions } from '@capacitor/core';
 
 @Injectable({
@@ -7,7 +6,7 @@ import { CapacitorHttp, HttpOptions } from '@capacitor/core';
 })
 export class MyHttpService {
   // Store the API key to a variable
-  private apiKey = '70759a4f7911402abcc53d3c51d3b759';
+  public apiKey = '70759a4f7911402abcc53d3c51d3b759';
 
   // Append the apikey to the url to grant access for get requests
   public getRecipesURL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${this.apiKey}`;

@@ -43,14 +43,19 @@
 
   <div class="width-control ion-padding">
     <ion-card id="ion-card" *ngFor="let recipe of recipeData">
-      <img src="{{recipe.image}}" />
+      <img [src]="recipe.image" />
       <ion-card-header>
         <ion-card-title id="ion-card-title">{{recipe.title}}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content> </ion-card-content>
 
-      <ion-button fill="outline" class="no-caps">Details</ion-button>
+      <ion-button
+        (click)="getRecipeDetails(recipe.id)"
+        fill="outline"
+        class="no-caps"
+        >Details</ion-button
+      >
     </ion-card>
   </div>
 </ion-content>

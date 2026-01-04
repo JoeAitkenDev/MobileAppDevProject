@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MyDataService } from '../services/my-data.service';
+import { SharedData } from '../services/shared-data';
 import { FormsModule } from '@angular/forms';
 
 import {
@@ -34,7 +35,7 @@ export class SettingsPage implements OnInit {
   // As the default selection is metric, add that to storage initially when the component loads
   unit: string = 'metric';
 
-  constructor(private mds: MyDataService) {}
+  constructor(private mds: MyDataService, private sd: SharedData) {}
 
   // Load the saved selection upon component launch, if there is one
   async ngOnInit() {
@@ -56,7 +57,13 @@ export class SettingsPage implements OnInit {
 
   // This is the event method for radio selection
   selectRadio(event: any) {
-    this.unit = event.detail.value; // Update the unit variable with the new selection
+    // Update the unit variable with the new selection
+    this.unit = event.detail.value;
+
+    // Commit the update to storage
     this.mds.set('unit', this.unit);
+
+    // Store the unit selection in the shared data service
+    this.sd.unit = this.unit;
   }
 }

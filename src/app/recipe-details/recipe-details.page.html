@@ -1,13 +1,54 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>RecipeDetails</ion-title>
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Recipe Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">RecipeDetails</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="page-background">
+  <!-- This div only appears when the selected unit of measurement is 'metric' -->
+  <div *ngIf="sd.unit === 'metric'" class="ion-padding width-control">
+    <h1 class="ion-padding">Ingredients: Metric</h1>
+
+    <ion-card id="ion-card" *ngFor="let ingredient of sd.ingredients">
+      <img
+        class="ingredient-image"
+        [src]="'https://spoonacular.com/cdn/ingredients_250x250/' + ingredient.image"
+      />
+      <ion-card-header>
+        <ion-card-title id="ion-card-title"
+          >{{ingredient.original}}</ion-card-title
+        >
+      </ion-card-header>
+
+      <ion-card-content>
+        {{ingredient.measures.metric.amount}}
+        {{ingredient.measures.metric.unitLong}}</ion-card-content
+      >
+    </ion-card>
+  </div>
+
+  <!-- This div only appears when the selected unit of measurement is 'us' -->
+  <div *ngIf="sd.unit === 'us'" class="ion-padding width-control">
+    <h1 class="ion-padding">Ingredients: US</h1>
+
+    <ion-card id="ion-card" *ngFor="let ingredient of sd.ingredients">
+      <img
+        class="ingredient-image"
+        [src]="'https://spoonacular.com/cdn/ingredients_250x250/' + ingredient.image"
+      />
+      <ion-card-header>
+        <ion-card-title id="ion-card-title"
+          >{{ingredient.original}}</ion-card-title
+        >
+      </ion-card-header>
+
+      <ion-card-content>
+        {{ingredient.measures.us.amount}}
+        {{ingredient.measures.us.unitLong}}</ion-card-content
+      >
+    </ion-card>
+  </div>
 </ion-content>

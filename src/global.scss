@@ -84,6 +84,12 @@ h1 {
   --color: #547792;
 }
 
+.ingredient-image {
+  width: 312px;
+  height: 240px;
+  object-fit: cover;
+}
+
 // Used to remove the enforcement of capital letters from the search button
 .no-caps {
   text-transform: none;

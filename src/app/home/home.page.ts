@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import {
   IonHeader,
   IonToolbar,
@@ -20,6 +21,7 @@ import { cogSharp, heartSharp, searchSharp, trashBin } from 'ionicons/icons';
 import { MyHttpService } from '../services/my-http.service';
 import { HttpOptions } from '@capacitor/core';
 import { CommonModule } from '@angular/common';
+import { SharedData } from '../services/shared-data';
 
 @Component({
   selector: 'app-home',
@@ -44,12 +46,21 @@ import { CommonModule } from '@angular/common';
 })
 export class HomePage {
   recipeData: any;
+  recipeDetailsData: any;
 
-  options: HttpOptions = {
+  recipes: HttpOptions = {
     url: this.mhs.getRecipesURL,
   };
 
-  constructor(private mhs: MyHttpService) {
+  details: HttpOptions = {
+    url: this.mhs.getRecipesURL,
+  };
+
+  constructor(
+    private mhs: MyHttpService,
+    private router: Router,
+    private sd: SharedData
+  ) {
     addIcons({
       heartSharp,
       cogSharp,
@@ -64,8 +75,22 @@ export class HomePage {
   }
 
   async getRecipes() {
-    let result = await this.mhs.get(this.options);
+    let result = await this.mhs.get(this.recipes);
     this.recipeData = result.data.results;
     console.log(this.recipeData);
+  }
+
+  async getRecipeDetails(id: number) {
+    this.details.url = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${this.mhs.apiKey}`;
+    let result = await this.mhs.get(this.details);
+    this.recipeDetailsData = result.data.extendedIngredients;
+
+    // Add the ingredients to the shared data service
+    this.sd.ingredients = this.recipeDetailsData;
+
+    console.log(this.recipeDetailsData);
+
+    // Navigate to the recipe page
+    this.router.navigate(['/recipe-details']);
   }
 }
