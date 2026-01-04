@@ -12,6 +12,9 @@ import {
   IonCardContent,
   IonCardHeader,
   IonCardTitle,
+  IonItem,
+  IonLabel,
+  IonList,
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -31,6 +34,9 @@ import {
     IonCardContent,
     IonCardHeader,
     IonCardTitle,
+    IonItem,
+    IonLabel,
+    IonList,
   ],
 })
 export class RecipeDetailsPage implements OnInit {
