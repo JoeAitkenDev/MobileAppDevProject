@@ -22,9 +22,9 @@
       each ingredient with a comma.
     </p>
   </div>
-  <div class="searchdiv ion-padding-horizontal">
+  <div class="width-control ion-padding-horizontal">
     <ion-searchbar
-      show-clear-button="focus"
+      show-clear-button="always"
       clear-icon="trash-bin"
       placeholder="Enter Ingredients"
       id="searchbar"
@@ -41,16 +41,16 @@
     </ion-button>
   </div>
 
-  <div>
-    <ion-card *ngFor="let recipe of recipeData" color="light">
+  <div class="width-control ion-padding">
+    <ion-card id="ion-card" *ngFor="let recipe of recipeData">
       <img src="{{recipe.image}}" />
       <ion-card-header>
-        <ion-card-title>{{recipe.title}}</ion-card-title>
+        <ion-card-title id="ion-card-title">{{recipe.title}}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content> </ion-card-content>
 
-      <ion-button fill="solid">Details</ion-button>
+      <ion-button fill="outline" class="no-caps">Details</ion-button>
     </ion-card>
   </div>
 </ion-content>

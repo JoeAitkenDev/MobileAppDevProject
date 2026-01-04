@@ -74,13 +74,23 @@ h1 {
   color: #547792;
 }
 
+#ion-card {
+  --background: #f5f2f2;
+  --color: #213448;
+  max-width: 312px;
+}
+
+#ion-card-title {
+  --color: #547792;
+}
+
 // Used to remove the enforcement of capital letters from the search button
 .no-caps {
   text-transform: none;
 }
 
-// Prevents the search bar/button from getting ridiculously large on wider screens
-.searchdiv {
+// Prevents applicable divs from getting ridiculously large on wider screens
+.width-control {
   max-width: 420px;
   width: 100%;
 }
