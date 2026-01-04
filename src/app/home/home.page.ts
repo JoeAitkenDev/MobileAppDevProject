@@ -88,12 +88,12 @@ export class HomePage {
     this.recipeIngredients = result.data.extendedIngredients;
     this.recipeInstructions = result.data.analyzedInstructions[0].steps;
 
-    // Add the ingredients and instructions to the shared data service
+    // Add the ingredients, instructions and id to the shared data service
     this.sd.ingredients = this.recipeIngredients;
     this.sd.instructions = this.recipeInstructions;
+    this.sd.recipeID = id;
 
-    console.log(result);
-    // console.log(this.recipeIngredients);
+    console.log(this.recipeIngredients);
 
     // Navigate to the recipe page
     this.router.navigate(['/recipe-details']);

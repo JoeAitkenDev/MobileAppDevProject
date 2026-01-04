@@ -9,4 +9,8 @@ export class SharedData {
   public ingredients: any = null;
 
   public instructions: any = null;
+
+  public recipeID: number = 0;
+
+  public favouritesList: number[] = [];
 }

@@ -12,7 +12,11 @@
   <div *ngIf="sd.unit === 'metric'" class="ion-padding width-control">
     <h1 class="ion-padding">Ingredients: Metric</h1>
 
-    <ion-card id="ion-card" *ngFor="let ingredient of sd.ingredients">
+    <ion-card
+      id="ion-card"
+      class="ion-padding"
+      *ngFor="let ingredient of sd.ingredients"
+    >
       <img
         class="ingredient-image"
         [src]="'https://spoonacular.com/cdn/ingredients_250x250/' + ingredient.image"
@@ -34,7 +38,11 @@
   <div *ngIf="sd.unit === 'us'" class="ion-padding width-control">
     <h1 class="ion-padding">Ingredients: US</h1>
 
-    <ion-card id="ion-card" *ngFor="let ingredient of sd.ingredients">
+    <ion-card
+      id="ion-card"
+      class="ion-padding"
+      *ngFor="let ingredient of sd.ingredients"
+    >
       <img
         class="ingredient-image"
         [src]="'https://spoonacular.com/cdn/ingredients_250x250/' + ingredient.image"
@@ -61,5 +69,29 @@
         <ion-label>{{step.number}}: {{step.step}}</ion-label>
       </ion-item>
     </ion-list>
+  </div>
+
+  <!-- Add to favourites button -->
+  <!-- Display if the id ISN'T present in the favouritesList array -->
+  <div *ngIf="!sd.favouritesList.includes(sd.recipeID)" class="ion-padding">
+    <ion-button
+      class="button-custom ion-padding"
+      (click)="addToFavourites(sd.recipeID)"
+    >
+      Add to Favourites
+      <ion-icon slot="end" name="heart-sharp"></ion-icon>
+    </ion-button>
+  </div>
+
+  <!-- Remove from favourites button -->
+  <!-- Display if the id IS present in the favouritesList array -->
+  <div *ngIf="sd.favouritesList.includes(sd.recipeID)" class="ion-padding">
+    <ion-button
+      class="button-custom ion-padding"
+      (click)="removeFromFavourites(sd.recipeID)"
+    >
+      Remove from Favourites
+      <ion-icon slot="end" name="heart-sharp"></ion-icon>
+    </ion-button>
   </div>
 </ion-content>

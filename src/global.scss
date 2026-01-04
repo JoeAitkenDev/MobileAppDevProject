@@ -68,6 +68,7 @@ h1 {
 .button-custom {
   --background: #213448;
   color: #eae0cf;
+  text-transform: none;
 }
 
 #radio {
@@ -95,11 +96,6 @@ h1 {
   width: 312px;
   height: 240px;
   object-fit: cover;
-}
-
-// Used to remove the enforcement of capital letters from the search button
-.no-caps {
-  text-transform: none;
 }
 
 // Prevents applicable divs from getting ridiculously large on wider screens
