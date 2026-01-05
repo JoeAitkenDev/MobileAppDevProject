@@ -42,6 +42,8 @@ export class FavouritesPage implements OnInit {
 
   async ngOnInit() {
     await this.mds.getRecipes();
+    await this.mds.loadSearchResults();
+    await this.mds.loadFavouritesFromStorage();
   }
 
   async loadRecipeDetails(id: number) {
@@ -49,5 +51,22 @@ export class FavouritesPage implements OnInit {
 
     // Navigate to the recipe page
     this.router.navigate(['/recipe-details']);
+  }
+
+  // N.B THE BELOW METHOD WAS ADAPTED FROM ONLINE SOURCE -> https://www.geeksforgeeks.org/typescript/remove-duplicate-elements-from-typescript-array/
+  // I was struggling with a duplicate problem and couldn't get around it.
+
+  // Remove duplicates
+  get favouriteRecipes() {
+    // Adds all the recipes from both data sets to an array
+    return [
+      ...(this.mds.recipeData || []),
+      ...(this.mds.searchBasedData || []),
+    ].filter(
+      // First occurance stays whilst following duplicates are removed
+      (recipe, index, self) =>
+        this.mds.favouritesList.includes(recipe.id) &&
+        index === self.findIndex((r) => r.id === recipe.id)
+    );
   }
 }

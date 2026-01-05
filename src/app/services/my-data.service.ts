@@ -73,4 +73,12 @@ export class MyDataService {
     const stored = await this.get('favourites');
     this.favouritesList = stored || [];
   }
+
+  async saveSearchResults() {
+    await this.storage.set('searchResults', this.searchBasedData);
+  }
+
+  async loadSearchResults() {
+    this.searchBasedData = (await this.storage.get('searchResults')) || [];
+  }
 }

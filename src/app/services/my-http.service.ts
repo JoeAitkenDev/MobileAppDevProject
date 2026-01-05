@@ -13,6 +13,7 @@ export class MyHttpService {
 
   constructor() {}
 
+  // Make API calls
   async searchRecipes() {
     const options: HttpOptions = {
       url: this.getRecipesURL,

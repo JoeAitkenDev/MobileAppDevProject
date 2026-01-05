@@ -83,7 +83,8 @@ export class HomePage {
     // Call the API using the complex search option (See API docs)
     const results = await this.mhs.searchByIngredients(ingredients);
     this.mds.searchBasedData = results.data.results;
-    console.log(this.mds.searchBasedData);
+
+    await this.mds.saveSearchResults();
 
     // Toggle the hasSearched variable to alter the dynamic display on the home page
     this.hasSearched = true;
