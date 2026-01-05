@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MyDataService } from '../services/my-data.service';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 import {
   IonBackButton,
@@ -31,10 +34,21 @@ import {
     IonCardHeader,
     IonCardTitle,
     IonButton,
+    CommonModule,
   ],
 })
 export class FavouritesPage implements OnInit {
-  constructor() {}
+  constructor(public mds: MyDataService, private router: Router) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    // Pull the data from persistant storage to local storage
+    this.mds.favouritesList = await this.mds.get('favourites');
+  }
+
+  async loadRecipeDetails(id: number) {
+    await this.mds.getRecipeDetails(id);
+
+    // Navigate to the recipe page
+    this.router.navigate(['/recipe-details']);
+  }
 }

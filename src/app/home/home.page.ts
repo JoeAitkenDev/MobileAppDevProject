@@ -19,8 +19,6 @@ import {
 
 import { addIcons } from 'ionicons';
 import { cogSharp, heartSharp, searchSharp, trashBin } from 'ionicons/icons';
-import { MyHttpService } from '../services/my-http.service';
-import { HttpOptions } from '@capacitor/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -45,13 +43,7 @@ import { CommonModule } from '@angular/common';
   ],
 })
 export class HomePage {
-  public recipeData: any;
-
-  constructor(
-    private mhs: MyHttpService,
-    private router: Router,
-    private mds: MyDataService
-  ) {
+  constructor(private router: Router, public mds: MyDataService) {
     addIcons({
       heartSharp,
       cogSharp,
@@ -61,14 +53,7 @@ export class HomePage {
   }
 
   ngOnInit() {
-    this.loadRecipes();
-    this.recipeData = [];
-  }
-
-  async loadRecipes() {
-    await this.mds.getRecipes();
-    this.recipeData = this.mds.recipeData;
-    console.log(this.recipeData);
+    this.mds.getRecipes();
   }
 
   async loadRecipeDetails(id: number) {

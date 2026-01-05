@@ -35,12 +35,14 @@ export class MyDataService {
     return await this.storage.get(key);
   }
 
+  // Extracts the data from the recipes API call
   async getRecipes() {
-    let result = await this.mhs.searchRecipes();
+    const result = await this.mhs.searchRecipes();
     this.recipeData = result.data.results;
     console.log(this.recipeData);
   }
 
+  // Separately extracts the ingredients and the instructions from the recipe details API call
   async getRecipeDetails(id: number) {
     const result = await this.mhs.getRecipeDetails(id);
 
