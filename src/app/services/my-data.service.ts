@@ -6,8 +6,9 @@ import { MyHttpService } from './my-http.service';
   providedIn: 'root',
 })
 export class MyDataService {
-  // This stores the recipes object so it can be used on both the home page and the favourites page
+  // These store the recipes' objects so they can be used on both the home page and the favourites page
   public recipeData: any;
+  public searchBasedData: any;
 
   // These variables help manage the logic throughout various pages
   public unit: string = 'metric';

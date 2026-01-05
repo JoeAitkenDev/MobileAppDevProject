@@ -30,4 +30,14 @@ export class MyHttpService {
   async get(options: HttpOptions) {
     return await CapacitorHttp.get(options);
   }
+
+  async searchByIngredients(ingredients: string[]) {
+    const options: HttpOptions = {
+      url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
+        this.apiKey
+      }&includeIngredients=${ingredients.join(',')}&number=10`,
+    };
+
+    return await this.get(options);
+  }
 }
