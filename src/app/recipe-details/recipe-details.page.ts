@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { heartSharp } from 'ionicons/icons';
+import { FormsModule } from '@angular/forms';
 import {
   IonBackButton,
   IonButtons,
@@ -19,6 +20,8 @@ import {
   IonLabel,
   IonList,
   IonToast,
+  IonSegment,
+  IonSegmentButton,
 } from '@ionic/angular/standalone';
 import { MyDataService } from '../services/my-data.service';
 import { ToastController } from '@ionic/angular';
@@ -46,9 +49,15 @@ import { ToastController } from '@ionic/angular';
     IonLabel,
     IonList,
     IonToast,
+    IonSegment,
+    IonSegmentButton,
+    FormsModule,
   ],
 })
 export class RecipeDetailsPage implements OnInit {
+  // Default segment
+  segment: string = 'ingredients';
+
   isFavourite: boolean = false;
 
   // Allow data to be imported from the my-data service
@@ -77,7 +86,7 @@ export class RecipeDetailsPage implements OnInit {
     const toast = await this.toastCtrl.create({
       message: 'Recipe added to favourites',
       duration: 2000,
-      position: 'top',
+      position: 'bottom',
     });
 
     await toast.present();
@@ -96,7 +105,7 @@ export class RecipeDetailsPage implements OnInit {
     const toast = await this.toastCtrl.create({
       message: 'Recipe removed from favourites',
       duration: 2000,
-      position: 'top',
+      position: 'bottom',
     });
 
     await toast.present();

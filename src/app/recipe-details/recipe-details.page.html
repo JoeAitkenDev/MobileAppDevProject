@@ -8,60 +8,69 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="page-background">
-  <!-- This div only appears when the selected unit of measurement is 'metric' -->
-  <div *ngIf="mds.unit === 'metric'" class="ion-padding width-control">
-    <h1 class="ion-padding">Ingredients: Metric</h1>
+  <!-- Hide both the Ingredients and the Instructions away in a Segment to reduce scrolling -->
+  <ion-segment [(ngModel)]="segment" color="primary" class="ion-margin-bottom">
+    <ion-segment-button value="ingredients"> Ingredients </ion-segment-button>
+    <ion-segment-button value="instructions"> Instructions </ion-segment-button>
+  </ion-segment>
 
-    <ion-card
-      id="ion-card"
-      class="ion-padding"
-      *ngFor="let ingredient of mds.ingredients"
-    >
-      <img
-        class="ingredient-image"
-        [src]="'https://spoonacular.com/cdn/ingredients_250x250/' + ingredient.image"
-      />
-      <ion-card-header>
-        <ion-card-title id="ion-card-title"
-          >{{ingredient.original}}</ion-card-title
-        >
-      </ion-card-header>
+  <!-- Ingredients -->
+  <div *ngIf="segment === 'ingredients'">
+    <!-- This div only appears when the selected unit of measurement is 'metric' -->
+    <div *ngIf="mds.unit === 'metric'" class="ion-padding width-control">
+      <h1 class="ion-padding">Ingredients: Metric</h1>
 
-      <ion-card-content>
-        {{ingredient.measures.metric.amount}}
-        {{ingredient.measures.metric.unitLong}}</ion-card-content
+      <ion-card
+        id="ion-card"
+        class="ion-padding"
+        *ngFor="let ingredient of mds.ingredients"
       >
-    </ion-card>
-  </div>
+        <img
+          class="ingredient-image"
+          [src]="'https://spoonacular.com/cdn/ingredients_250x250/' + ingredient.image"
+        />
+        <ion-card-header>
+          <ion-card-title id="ion-card-title"
+            >{{ingredient.original}}</ion-card-title
+          >
+        </ion-card-header>
 
-  <!-- This div only appears when the selected unit of measurement is 'us' -->
-  <div *ngIf="mds.unit === 'us'" class="ion-padding width-control">
-    <h1 class="ion-padding">Ingredients: US</h1>
-
-    <ion-card
-      id="ion-card"
-      class="ion-padding"
-      *ngFor="let ingredient of mds.ingredients"
-    >
-      <img
-        class="ingredient-image"
-        [src]="'https://spoonacular.com/cdn/ingredients_250x250/' + ingredient.image"
-      />
-      <ion-card-header>
-        <ion-card-title id="ion-card-title"
-          >{{ingredient.original}}</ion-card-title
+        <ion-card-content>
+          {{ingredient.measures.metric.amount}}
+          {{ingredient.measures.metric.unitLong}}</ion-card-content
         >
-      </ion-card-header>
+      </ion-card>
+    </div>
 
-      <ion-card-content>
-        {{ingredient.measures.us.amount}}
-        {{ingredient.measures.us.unitLong}}</ion-card-content
+    <!-- This div only appears when the selected unit of measurement is 'us' -->
+    <div *ngIf="mds.unit === 'us'" class="ion-padding width-control">
+      <h1 class="ion-padding">Ingredients: US</h1>
+
+      <ion-card
+        id="ion-card"
+        class="ion-padding"
+        *ngFor="let ingredient of mds.ingredients"
       >
-    </ion-card>
+        <img
+          class="ingredient-image"
+          [src]="'https://spoonacular.com/cdn/ingredients_250x250/' + ingredient.image"
+        />
+        <ion-card-header>
+          <ion-card-title id="ion-card-title"
+            >{{ingredient.original}}</ion-card-title
+          >
+        </ion-card-header>
+
+        <ion-card-content>
+          {{ingredient.measures.us.amount}}
+          {{ingredient.measures.us.unitLong}}</ion-card-content
+        >
+      </ion-card>
+    </div>
   </div>
 
   <!-- Instructions -->
-  <div class="ion-padding">
+  <div *ngIf="segment === 'instructions'" class="ion-padding">
     <h1 class="ion-padding">Instructions</h1>
 
     <ion-list [inset]="true" id="ion-list">
