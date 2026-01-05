@@ -18,8 +18,10 @@ import {
   IonIcon,
   IonLabel,
   IonList,
+  IonToast,
 } from '@ionic/angular/standalone';
 import { MyDataService } from '../services/my-data.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-recipe-details',
@@ -43,13 +45,14 @@ import { MyDataService } from '../services/my-data.service';
     IonIcon,
     IonLabel,
     IonList,
+    IonToast,
   ],
 })
 export class RecipeDetailsPage implements OnInit {
   isFavourite: boolean = false;
 
   // Allow data to be imported from the my-data service
-  constructor(public mds: MyDataService) {
+  constructor(public mds: MyDataService, private toastCtrl: ToastController) {
     addIcons({
       heartSharp,
     });
@@ -69,6 +72,15 @@ export class RecipeDetailsPage implements OnInit {
     this.mds.favouritesList.push(id);
     await this.mds.saveFavouritesToStorage();
     await this.toggleFavourite();
+
+    // Adds a popup notifcation using the ion toast component
+    const toast = await this.toastCtrl.create({
+      message: 'Recipe added to favourites',
+      duration: 2000,
+      position: 'top',
+    });
+
+    await toast.present();
   }
 
   // Remove the recipe id from the favourites array
@@ -79,5 +91,14 @@ export class RecipeDetailsPage implements OnInit {
 
     await this.mds.saveFavouritesToStorage();
     await this.toggleFavourite();
+
+    // Adds a popup notifcation using the ion toast component
+    const toast = await this.toastCtrl.create({
+      message: 'Recipe removed from favourites',
+      duration: 2000,
+      position: 'top',
+    });
+
+    await toast.present();
   }
 }
