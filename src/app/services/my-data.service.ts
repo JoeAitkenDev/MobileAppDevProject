@@ -25,6 +25,7 @@ export class MyDataService {
   async init() {
     const storage = await this.storage.create();
     this.recipeData = [];
+    await this.loadFavouritesFromStorage(); // Load the favourites from persistant storage
   }
 
   async set(key: string, value: any) {
@@ -64,5 +65,11 @@ export class MyDataService {
     const favourites = await this.storage.get('favourites');
 
     return favourites.includes(id); // Return true or false
+  }
+
+  // This is required to load the stored favourites to local memory - Supports the favourites card creation in-template logic
+  async loadFavouritesFromStorage() {
+    const stored = await this.get('favourites');
+    this.favouritesList = stored || [];
   }
 }

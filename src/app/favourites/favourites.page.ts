@@ -41,8 +41,7 @@ export class FavouritesPage implements OnInit {
   constructor(public mds: MyDataService, private router: Router) {}
 
   async ngOnInit() {
-    // Pull the data from persistant storage to local storage
-    this.mds.favouritesList = await this.mds.get('favourites');
+    await this.mds.getRecipes();
   }
 
   async loadRecipeDetails(id: number) {
